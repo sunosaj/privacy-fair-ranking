@@ -104,7 +104,7 @@ for cid in range(num_rankings):
 
     X = milp_model.addMVar(shape=(k, k), vtype=GRB.BINARY, name="X")
 
-    sensitivity = 0.5
+    sensitivity = 1
     noise = np.random.laplace(loc=0.0, scale=sensitivity/(global_epsilon / (n * num_rankings)), size=len(user_item_rating_preds))
     unfairness_metric_noisy = A_reranked_uf_metric_noisy - R_reranked_uf_metric_noisy + noise
     np.save(f'unfairness_metric_noisy_{cid}', unfairness_metric_noisy)
